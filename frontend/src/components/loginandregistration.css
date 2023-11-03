@@ -1,0 +1,32 @@
+
+
+
+form {
+    display: flex;
+    flex-direction: column; /* Arrange input elements in a column */
+    align-items: center; /* Center vertically within the viewport */
+  }
+  
+  button, .link {
+    margin: 10px; /* Add margin to all elements to create spacing */
+    text-align: center; /* Center the text within input, label, and button */
+  }
+  
+  input{
+    margin: 10px;
+  }
+  
+  .input-container {
+    display: flex;
+    align-items: center; /* Align items vertically in the middle */
+  }
+  
+  .input-container label {
+    flex: 1; /* Allow labels to expand to fill the available space */
+    text-align: right; /* Right-align the text of labels */
+    margin-right: 10px; /* Add margin to create spacing between labels and input boxes */
+  }
+  
+  .input-container input {
+    flex: 2; /* Allow input boxes to expand to fill the available space */
+  }

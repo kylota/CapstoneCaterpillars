@@ -131,7 +131,7 @@ td:nth-child(1) {
 }
 /*  --------------- Global Styles -----------------  */
 body {
-    background-color: slategrey;
+    background-color: rgb(214, 224, 235);
     font-family: 'Roboto', sans-serif;
     margin: 0;
     font-size: 80%;
