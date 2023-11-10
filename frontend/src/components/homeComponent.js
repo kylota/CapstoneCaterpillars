@@ -1,5 +1,5 @@
 import React from 'react'
-import './loginandregistration.css'
+import '../css/loginandregistration.css'
 
 function Home(){
     return (

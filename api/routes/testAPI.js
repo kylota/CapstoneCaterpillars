@@ -59,17 +59,17 @@ router.post('/signup', async (req, res) => {
     });
     
 
-    // Set up nodemailer transporter
+// Set up nodemailer transporter
 // Create a transporter for nodemailer
 const transporter = nodemailer.createTransport({
-  service: 'Outlook365', // Specify the Outlook service
+  service: '', 
   auth: {
-    user: 'cannunerog@outlook.com', // Your Outlook email
-    pass: '661T296K' // Your Outlook password or app password if 2FA is enabled
+    user: '', 
+    pass: '' 
   }
 });
     const mailOptions = {
-      from: 'cannunerog@outlook.com', // Sender address
+      from: '', // Sender address
       to: email, // Recipient address
       subject: 'Registration Confirmation',
       html: `<p>Thank you for registering. Please confirm your email by clicking on the following link: <a href="http://yourdomain.com/confirm/${uniqueIdentifier}">Confirm Email</a></p>`

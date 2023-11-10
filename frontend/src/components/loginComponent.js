@@ -17,7 +17,6 @@ function Login({onLogin}) {
     e.preventDefault();
     
     // Validate email and password if needed
-  
     // Send request to backend to verify email and password
     try {
       //begin API call
