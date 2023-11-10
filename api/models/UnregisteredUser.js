@@ -20,6 +20,11 @@ UnregisteredUser.init({
   requestedDate: {
     type: DataTypes.DATE,
     allowNull: true, // This can be null initially and set when sending an email verification
+  },
+  uniqueIdentifier: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4, // Although we are generating the UUID in the code, we can keep this for direct database inserts
+    allowNull: false
   }
 }, {
   sequelize,

@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const RegisteredUser = require('../models/RegisteredUser.js');
 const UnregisteredUser = require('../models/UnregisteredUser.js');
+const nodemailer = require('nodemailer');
+const { v4: uuidv4 } = require('uuid');
 
 
 router.post('/login', async (req, res) => {
@@ -36,10 +38,12 @@ router.post('/signup', async (req, res) => {
       return res.status(400).json({ success: false, message: 'Email is already in use' });
     }
 
+    const uniqueIdentifier = uuidv4();
+
     function getCurrentDateFormatted() {
       const now = new Date();
       const year = now.getFullYear();
-      const month = (now.getMonth() + 1).toString().padStart(2, '0'); // getMonth() is zero-indexed
+      const month = (now.getMonth() + 1).toString().padStart(2, '0'); 
       const day = now.getDate().toString().padStart(2, '0');
     
       return `${month}-${day}-${year}`;
@@ -47,19 +51,46 @@ router.post('/signup', async (req, res) => {
 
     const formattedDate = getCurrentDateFormatted();
 
-    const unreigsteredUser = await UnregisteredUser.create({
+    const unregisteredUser = await UnregisteredUser.create({
       submittedEmail: email,
       pendingUserPassword: password,
-      requestedDate: formattedDate
+      requestedDate: formattedDate,
+      uniqueIdentifier: uuidv4()
     });
+    
+
+    // Set up nodemailer transporter
+// Create a transporter for nodemailer
+const transporter = nodemailer.createTransport({
+  service: 'Outlook365', // Specify the Outlook service
+  auth: {
+    user: 'cannunerog@outlook.com', // Your Outlook email
+    pass: '661T296K' // Your Outlook password or app password if 2FA is enabled
+  }
+});
+    const mailOptions = {
+      from: 'cannunerog@outlook.com', // Sender address
+      to: email, // Recipient address
+      subject: 'Registration Confirmation',
+      html: `<p>Thank you for registering. Please confirm your email by clicking on the following link: <a href="http://yourdomain.com/confirm/${uniqueIdentifier}">Confirm Email</a></p>`
+    };
 
     console.log(`Submitted Email: ${email}\nPendingPassword: ${password}\nrequestedDate: ${formattedDate}`)
 
-      
-    return res.status(200).json({ success: true, message: 'User registered successfully' });
+    // Send the email
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending email:', error);
+        res.status(500).json({ success: false, message: 'Failed to send confirmation email' });
+      } else {
+        console.log('Email sent:', info.response);
+        res.status(200).json({ success: true, message: 'User registered successfully, confirmation email sent' });
+      }
+    });
+
   } catch (err) {
-    console.error(err);
-    return res.status(500).json({ success: false, message: 'Internal server error' });
+    console.error('Error during registration:', err);
+    res.status(500).json({ success: false, message: 'Internal server error' });
   }
 });
 
