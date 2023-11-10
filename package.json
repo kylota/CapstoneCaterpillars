@@ -7,6 +7,7 @@
     "start": "concurrently \"npm run start-backend\" \"npm run start-frontend\""
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "concurrently": "^7.6.0"
   },
   "dependencies": {
