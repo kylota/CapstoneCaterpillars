@@ -43,40 +43,45 @@ function Login({onLogin}) {
 };
   
 
-  return (
-    <div>
+return (
+  <div>
+      <form onSubmit= {handleSubmit} action="">
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="">
-          <label>Email</label>
-          <input 
-            placeholder="Enter Email" 
-            name="email"
-            maxLength="45"
-            value={email}
-            onChange={handleEmailChange}
-          />
-        </div>
-        <div className="">
-          <label>Password</label>
-          <input 
-            placeholder="Enter Password" 
-            name="password"
-            maxLength="15"
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </div>
-        <button type="submit" className="">
-          Log in
-        </button>
-        <Link to="/signup" className="">
-          Create Account
-        </Link>
+      <div className = "">
+          
+          <div className="input-container">
+              <label for = "emailInput">Email</label>
+              <input 
+              placeholder='Enter Email' 
+              id = "emailInput"
+              name="email"
+              maxLength="45"
+              value={email}
+              onChange={handleEmailChange}/>
+          </div>
+          <div className="input-container">
+              <label for = "passwordInput">Password</label>
+              <input 
+              placeholder='Enter Password' 
+              id = "passwordInput"
+              name="password"
+              maxLength="15"
+              type="password"
+              value={password}
+              onChange={handlePasswordChange}/>
+          </div>
+      </div>
+        
+          <button type ="submit" className="">
+              Log in
+          </button>
+          <Link to="/signup" className="link">
+              Create Account
+          </Link>
       </form>
-    </div>
-  );
+  </div>
+
+);
 }
 
-export default Login;
+export default Login
