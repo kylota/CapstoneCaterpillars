@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../css/index.css';
 
 function Login({onLogin}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); 
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -22,32 +21,28 @@ function Login({onLogin}) {
     // Send request to backend to verify email and password
     try {
       //begin API call
-        const response = await fetch("http://localhost:4000/testAPI/login", { 
-            //const response = await fetch("http://localhost:4000/testAPI/login", {
+        const response = await fetch("http://localhost:4000/landing/login", { 
+            //changed away from testAPI to look more professional
+            //const response = await fetch("http://localhost:4000/testAPI/login", { 
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
-      });
-  
-      const data = await response.json();
-      if (data.success) { //Successful API response
-          console.log('Successful')
-          alert('Login successful!');
-          onLogin();
-          navigate('/home');
-      } else {
-          console.log('failed') //Unsuccessful API response
-          alert(data.message);
+        });
+
+        const data = await response.json();
+        if (data.success) { //Successful API response
+              console.log('Successful')
+            onLogin();
+          } else {
+              console.log('login failed') //Unsuccessful API response
+          }
+      } catch (error) {
+          console.error(error);
+          console.log(error)
       }
-    } catch (error) {
-        console.error(error);
-        console.error('Login failed', error);
-        console.log(error)
-        alert('Login failed');
-    }
-    };  
+    };
 
 
 return (

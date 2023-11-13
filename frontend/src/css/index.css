@@ -32,9 +32,6 @@ input {
 /*Kys Code starts here. Delete all below this line as desired.*/
 
 /*Slick Demo Info*/
-img {
-    max-width: 100%;
-}
 
 .containerslick {
     margin: 40px auto;
@@ -75,8 +72,12 @@ html {
 /*  --------------- Utility Classes -----------------  */
 .container {
     width: 80vw;
-    max-width: 960px;
+    /*max-width: 960px;*/
+    max-width: 700px;
     margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .image-container {
@@ -231,7 +232,8 @@ footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 0px;
+    flex-direction: row;
 }
 
 #colophon {
@@ -240,7 +242,7 @@ footer {
 }
 
     #colophon h6 {
-        padding: 20px;
+        padding: 10px;
         margin: 0;
         text-align: center;
         color: #ffffff;
