@@ -1,16 +1,33 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/*This is code from loginandregistration.css to merge code.*/
+form {
+    display: flex;
+    flex-direction: column; /* Arrange input elements in a column */
+    align-items: center; /* Center vertically within the viewport */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+button, .link {
+    margin: 10px; /* Add margin to all elements to create spacing */
+    text-align: center; /* Center the text within input, label, and button */
 }
+
+input {
+    margin: 10px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center; /* Align items vertically in the middle */
+}
+
+    .input-container label {
+        flex: 1; /* Allow labels to expand to fill the available space */
+        text-align: right; /* Right-align the text of labels */
+        margin-right: 10px; /* Add margin to create spacing between labels and input boxes */
+    }
+
+    .input-container input {
+        flex: 2; /* Allow input boxes to expand to fill the available space */
+    }
 
 /*Kys Code starts here. Delete all below this line as desired.*/
 
@@ -66,10 +83,10 @@ html {
     text-align: center;
 }
 
-    .image-container img {
-        margin-top: 5%;
-        display: inline-block;
-    }
+.image-container img {
+    margin-top: 5%;
+    display: inline-block;
+}
 
 .img-right {
     float: right;
@@ -87,10 +104,13 @@ html {
 
 .img-center {
     display: block;
-    border: 1px solid #c0c0c0;
+    margin-top: 5%;
     padding: 2px;
-    margin: 20px auto;
+    margin-left: auto;
+    margin-right: auto;
+    /*width: 50%;*/
 }
+
 /*  --------------- Responsive Images -----------------  */
 img {
     max-width: 100%;
