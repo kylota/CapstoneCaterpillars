@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "nodemailer": "^6.9.7",
+    "pixi.js": "^7.3.2",
     "slick-carousel": "^1.8.1",
     "uuid": "^9.0.1"
   }
