@@ -47,9 +47,9 @@ function SignUp() {
   };
 
   return (
-    <div>
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
+      <div>
+          <form onSubmit={handleSubmit}>
+      <h2>Sign Up</h2>      
         <div className="">
           <label>Email</label>
           <input

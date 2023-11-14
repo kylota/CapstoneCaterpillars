@@ -5,7 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 
+var homeRouter = require('./routes/home');
 var indexRouter = require('./routes/index');
+var landingRouter = require('./routes/landing');
 var usersRouter = require('./routes/users');
 var testAPIRouter = require('./routes/testAPI');
 
@@ -37,7 +39,9 @@ app.use((req, res, next) => {
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/home', homeRouter);
 app.use('/', indexRouter);
+app.use('/landing', landingRouter);
 app.use('/users', usersRouter);
 app.use('/testAPI', testAPIRouter);
 
